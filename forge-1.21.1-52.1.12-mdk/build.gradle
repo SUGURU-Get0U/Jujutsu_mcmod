@@ -1,9 +1,24 @@
-plugins {
-    id 'eclipse'
-    id 'idea'
-    id 'maven-publish'
-    id 'net.minecraftforge.gradle' version '[6.0.24,6.2)'
+buildscript {
+    repositories {
+        maven {
+            url = 'https://maven.minecraftforge.net'
+            allowInsecureProtocol = true // Add this here too!
+        }
+        mavenCentral()
+    }
+    dependencies {
+        classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '6.0.24', changing: true
+    }
 }
+
+apply plugin: 'net.minecraftforge.gradle'
+apply plugin: 'eclipse'
+apply plugin: 'idea'
+apply plugin: 'maven-publish'
+
+version = mod_version
+group = mod_group_id
+// ... rest of your file stays the same
 
 version = mod_version
 group = mod_group_id
